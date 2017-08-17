@@ -1,0 +1,51 @@
+.header {
+	background-image: url("feedback-banner.jpg");
+	height: 510px;
+	padding-top: 130px;
+}
+
+.logindiv {
+	background-color: white;
+	width: 380px;
+	height: 380px;
+	margin-left: 400px;
+	box-shadow: 0.1px 0.2px 1px 4px grey;
+}
+
+.logintitle {
+	background-color: #3090C7;
+	padding: 3px;
+	text-align: center;
+	color: white;
+	box-shadow: 0px 5px 10px grey;
+}
+
+.loginboxes
+{
+	padding: 10px;
+	width: 85%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+.loginform
+{
+	padding-top: 50px;
+	margin-left: 8%;
+
+}
+
+.loginbutton
+{
+	margin: 25%;
+	padding-left: 40px;
+	padding-right: 40px; 
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: #3090C7;
+	font-size: 18px;
+	color: white;
+	border: 1px solid;
+	box-shadow: 0px 2px 10px grey;
+}
