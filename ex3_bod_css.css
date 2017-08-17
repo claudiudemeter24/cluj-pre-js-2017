@@ -1,0 +1,42 @@
+.textbox {
+	width: 30%;
+	margin-top: 5%;
+	margin-right: 0.5%;
+	padding: 1%;
+	border: none;
+}
+
+.textbox::placeholder{
+	border-bottom: 1px solid lightgrey;
+	color: lightgrey;
+}
+
+.textbox:focus{
+	outline: none;
+}
+
+.boxTitle {
+	color: #3090C7;
+	margin-left: 5%;
+}
+
+.image {
+	width: 22%;
+	margin-right: 11%;
+}
+
+.foot
+{
+	height: 100%;
+	width: 100%;
+	background-color: #DFDFDF;
+	color: #828384;
+}
+
+.foot h2
+{
+	margin-top: 0;
+	margin-left: 68%;
+	padding-top: 18px;
+
+}

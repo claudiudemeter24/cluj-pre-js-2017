@@ -1,0 +1,40 @@
+.header {
+	width: 100%;
+	height: 60px;
+	border-bottom: 1px solid;
+}
+
+.logintitle {
+	background-color: #3090C7;
+	padding: 3px;
+	text-align: center;
+	color: white;
+	box-shadow: 0px 5px 10px grey;
+}
+
+.loginboxes
+{
+	padding: 10px;
+	width: 85%;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+.table
+{
+	width: 60%;
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	margin-top: 8%;
+	margin-left: 20%;
+	margin-bottom: 20%;
+
+}
+
+.table td, th 
+{
+	box-shadow: 0px 1px 0px #888888;
+	text-align: left;
+	padding: 2%;
+}
