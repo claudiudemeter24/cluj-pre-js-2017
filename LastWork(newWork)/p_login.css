@@ -1,0 +1,53 @@
+.section1{
+	background-image: url("feedback-banner.jpg");
+	width: 100%;
+}
+
+
+header{
+	height: 640px;
+}
+
+.loginform_header{
+	background-color: #03a8f3;
+	text-align: center;
+	line-height: 70px;
+    box-shadow: 0px 5px 10px grey;
+}
+
+.loginform_header h1{
+	margin: 0;
+	color: #ffffff;
+}
+
+.loginform_div{
+	background-color: #ffffff;
+	height: 360px;
+	width: 380px;
+	align-self: center;
+}
+
+.loginform_body{
+	padding: 40px;
+	text-align: center;
+}
+
+.loginform_body input{
+	width: 100%;
+	height: 40px;
+	border: 0;
+	border-bottom: 1px solid #828384;
+}
+
+.loginform_body button{
+	margin-top: 40px;
+	padding: 10px 40px;
+	font-size: 15px;
+	color: #ffffff;
+	background-color: #03a8f3;
+}
+
+.image{
+	width: 30%;
+	height: 30%;
+}

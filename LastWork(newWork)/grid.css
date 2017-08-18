@@ -1,0 +1,17 @@
+.grid{
+	width: 1200px;
+	display: flex;
+	margin: 0 auto;
+}
+
+.col1{
+	flex: 0 0 33%;
+}
+
+.col2{
+	flex: 0 0 66%;
+}
+
+.col3{
+	flex: 0 0 100%;
+}
