@@ -1,0 +1,41 @@
+.banner_background{
+    background-image: url("../Images/feedback-banner.jpg");
+}
+
+.white_background{
+    background-color: #ffffff;
+}
+
+.white_textcolor{
+    color: #ffffff;
+}
+
+.loginform{
+    background-color: #03a8f3;
+    box-shadow: 0px 5px 10px grey;
+}
+
+.loginform_input{
+    border-bottom: 1px solid #828384;
+	outline: none;
+}
+
+.loginform_button{
+    font-size: 15px;
+    color: #ffffff;
+	background-color: #03a8f3;
+	box-shadow: 0px 5px 10px grey;
+}
+
+.loginpage_image{
+	width: 450px;
+	height: 400px;
+}
+
+.body_background2{
+	background-color: #EFEEEC;
+}
+
+.footer_background{
+    background-color: #DFDFDF;
+}
