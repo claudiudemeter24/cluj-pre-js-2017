@@ -1,62 +1,63 @@
-.header{
+.header {
 	width: 100%;
 }
 
-insideheader{
+.insideheader {
 	height: 640px;
 }
 
-.loginform{
-	height: 360px;
-	width: 380px;
-	align-self: center;
+.loginform {
+    height: 360px;
+    width: 380px;
+    align-self: center;
 }
 
-.loginform_bar{
-	text-align: center;
-	line-height: 70px;
+.loginform_bar {
+    text-align: center;
+    line-height: 70px;
 }
 
-.loginform_bar_text{
+.loginform_bar_text {
     margin: 0;
 }
 
-.loginform_box{
-	padding: 40px;
-	text-align: center;
+.loginform_box {
+    padding: 40px;
+    text-align: center;
 }
 
-.loginform_input{
+.loginform_input {
     width: 100%;
-	height: 40px;
-	margin-top: 10px;
-	border: 0;
+    height: 40px;
+    margin-top: 10px;
+    border: 0;
 }
 
-.loginform_button{
+.loginform_button {
     margin-top: 40px;
-	padding: 10px 40px;
+    padding: 10px 40px;
 }
 
-.section_height{
-	height: 640px;
+.section_height {
+    height: 640px;
 }
 
-.div_padding{
-	padding: 50px 0px;
+.div_padding {
+    padding: 50px 0px;
 }
 
-.text_margin{
+.text_margin {
     margin: 70px 100px;
 }
 
-.footer_section{
-    width: 100%; 
-	height: 100px;
+.footer_section {
+    width: 100%;
+    height: 100px;
+    position: absolute;
 }
 
-.footer_text{
+.footer_text {
     margin: 40px 0px;
-	text-align: right;
-	width: 100%;
+    text-align: right;
+    width: 100%;
 }
