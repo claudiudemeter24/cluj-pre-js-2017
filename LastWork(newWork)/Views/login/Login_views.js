@@ -31,7 +31,7 @@ const SubmitFeedbackSection = function(option){
     return ` 
     <section class="section_height">
     <div class="grid div_padding">
-        <img src="Images/new-feedback.jpg" class="col1 image">
+        <img src="assets/new-feedback.jpg" class="col1 image">
         <article class="col2">
             <h1>Submit new feedback</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra
@@ -65,7 +65,7 @@ const SubmitFeedbackResults = function(option){
                arcu mauris, malesuada quis ornare accumsan, blandi
             </p>
         </article>
-        <img src="Images/results.jpg" class="image">
+        <img src="assets/results.jpg" class="image">
     </div>
 </section>
 `
@@ -91,5 +91,5 @@ const LoginPage = function(option){
 }
 
 window.onload = function(){
-    document.querySelector('body').innerHTML=LoginPage({});
+    document.querySelector('#app').innerHTML=LoginPage({});
 }
