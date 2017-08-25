@@ -1,33 +1,33 @@
-const LoginForm = function(option){
+const LoginForm = function (option) {
     return ` 
     <div class="loginform_div col1">
     <div class="loginform_header">
         <h1>Interview Feedback</h1>
     </div>
     <div class="loginform_body">
-        <form action="Evaluations_page.html">
-            <input type="text" placeholder="Username" name="name_box" class="loginform_body_input" />
-            <input type="password" placeholder="Password" name="pass_box" class="loginform_body_input" />
+        <form id="loginFormId" action="Evaluations_page.html">
+            <input type="text" id="username" placeholder="Username" name="name_box" class="loginform_body_input" />
+            <input type="password" id="password" placeholder="Password" name="pass_box" class="loginform_body_input" />
             <!--<a href="ex2.html">Login</a>
             <button type="button">Login</button>-->
-            <input type="submit" value="Login" class="loginform_body_button" />
+            <input type="submit" name="loginButton" value="Login" class="loginform_body_button" />
         </form> 
     </div>  
 </div>
-`
-}
+`;
+};
 
-const LoginHeader = function(option){
+const LoginHeader = function (option) {
     return `
     <section class="head_section">
     <header class="grid">
     ${LoginForm({})}
     </header>
     </section>
-   `
-}
+   `;
+};
 
-const SubmitFeedbackSection = function(option){
+const SubmitFeedbackSection = function (option) {
     return ` 
     <section class="section_height">
     <div class="grid div_padding">
@@ -46,10 +46,10 @@ const SubmitFeedbackSection = function(option){
         </article>
     </div>
 </section>
-`
-}
+`;
+};
 
-const SubmitFeedbackResults = function(option){
+const SubmitFeedbackResults = function (option) {
     return ` 
     <section class="section_height body_section2">
     <div class="grid div_padding">
@@ -68,28 +68,18 @@ const SubmitFeedbackResults = function(option){
         <img src="assets/results.jpg" class="image">
     </div>
 </section>
-`
-}
+`;
+};
 
-const Footer = function(option){
-    return ` 
-    <section class="footer_section">
-    <footer class="grid">
-        <p>Copyright@Softvision 2017</p>
-    </footer>		
-</section>
-`
-}
-
-const LoginPage = function(option){
+const LoginPage = function (option) {
     return `
     ${LoginHeader({})}
     ${SubmitFeedbackSection({})}
     ${SubmitFeedbackResults({})}
     ${Footer({})}
-    `
-}
+    `;
+};
 
-window.onload = function(){
-    document.querySelector('#app').innerHTML=LoginPage({});
-}
+// window.onload = function () {
+//     document.querySelector('#app').innerHTML = LoginPage({});
+// };
