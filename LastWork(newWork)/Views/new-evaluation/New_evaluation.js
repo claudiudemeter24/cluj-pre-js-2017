@@ -1,17 +1,4 @@
-const NAV = function(option){
-    return `
-    <section class="header">
-    <img src="assets/logo.jpg" class="image">
-    <div class="header_div">
-        <h1 style="margin-bottom: 0px"><a href="Evaluations_page.html" target="_self" class="eval_button">Evaluations</a></h1>
-        <h1 style="margin-bottom: 0px"><a href="NewEvaluation_page.html" target="_self" class="neweval_button"> New Evaluation</a></h1>
-    </div>
-    <h2><a href="Login_page.html" target="_self" class="logout">Logout</a></h2>
-    </section>
-    `
-}
-
-const CandidateDetailsForm = function(option){
+const CandidateDetailsForm = function (option) {
     return `
     <input class="textbox" type="text" placeholder="Candidate" name="CandName">
     <input class="textbox" type="text" placeholder="Interviewer" name="IntervName">
@@ -19,469 +6,353 @@ const CandidateDetailsForm = function(option){
     `
 }
 
-const TechnicalLevelPicker = function(option){
+const TechnicalLevelPickerHeader = function (option) {
+    const levelTitle = option.headers.map(function (element) {
+        return `
+        <span> ${element} </span>
+        `
+    })
+    return levelTitle.join('')
+}
+
+const TechnicalLevelPickerInputs = function (option) {
+
+    const inputsArr = option.map(function (element) {
+        return `
+             <input type="radio" style="" name="b" value = "${element}">
+            `
+    });
     return `
-    <h1 class="boxTitle">Technical Level</h1>
+        <div class="groupRadioButtons">
+        ${inputsArr.join('')}
+        </div>`
+}
+
+const TechnicalLevelPickerBody = function (option) {
+    const radioList = option.columnData.map(function (element) {
+        return `
+        ${TechnicalLevelPickerInputs(element.inputLevels)}
+        `
+    });
+    return radioList.join('')
+}
+
+const TechnicalLevelPicker = function (option) {
+    const obj = {
+        title: 'Technical level',
+        headers: ['Trainee', 'Junior', 'Middle', 'Senior'],
+        columnData: [
+            {
+                inputLevels: ['Trainee']
+            },
+            {
+                inputLevels: ['Junior 1', 'Junior 2', 'Junior 3']
+            },
+            {
+                inputLevels: ['Middle 1', 'Middle 2', 'Middle 3']
+            },
+            {
+                inputLevels: ['Senior 1', 'Senior 2', 'Senior 3']
+            }
+        ]
+    };
+
+    return `
+    <h1 class="boxTitle">${obj.title}</h1>
     <div id="radio_select">
         <div id="radio_select_header">
-            <span> Trainee </span>
-            <span> Junior </span>
-            <span> Middle </span>
-            <span> Senior </span>
+            ${TechnicalLevelPickerHeader(obj)}
         </div>
-
-            <input type="radio" name="b" value="Trainee" style="margin-left: 55px; margin-right: 295px">
-            <input type="radio" name="b" value="Junior1">
-            <input type="radio" name="b" value="Junior2">
-            <input type="radio" name="b" value="Junior3" style="margin-right: 270px">
-            <input type="radio" name="b" value="Middle1">
-            <input type="radio" name="b" value="Middle2">
-            <input type="radio" name="b" value="Middle3" style="margin-right: 270px">
-            <input type="radio" name="b" value="Senior1">
-            <input type="radio" name="b" value="Senior2">
-            <input type="radio" name="b" value="Senior3">
+            ${TechnicalLevelPickerBody(obj)}
     </div>
     `
 }
 
-const Textarea = function(option){
+const textArea = function (option) {
     return `
-    <h1 class="boxTitle">Workflow, Leadership &amp Soft Skills</h1>
-    <textarea placeholder="The type of project that is suitable for the candidate Is guidance required for the candidate"></textarea>
-
-    <h1 class="boxTitle">Should the candidate be hired?</h1>
-    <textarea placeholder="*required"></textarea>
-
-    <h1 class="boxTitle">General Impression</h1>
-    <textarea placeholder="Describe the environment in which the candidate works. Describe any guidance or management experience."></textarea>
+    <h1 class="boxTitle" name="${option.name}">${option.title}</h1>
+    <textarea placeholder="${option.placeholder}"></textarea>
     `
 }
 
-const DropdownSelector = function(option){
+const textAreaSection = function (option) {
+    const obj = [
+        {
+            title: 'Workflow, Leadership &amp Soft Skills',
+            placeholder: 'The type of project that is suitable for the candidate Is guidance required for the candidate',
+            name: 'textBox1'
+        },
+        {
+            title: 'Should the candidate be hired?',
+            placeholder: '*required',
+            name: 'textBox2'
+        },
+        {
+            title: 'General Impression',
+            placeholder: 'Describe the environment in which the candidate works. Describe any guidance or management experience.',
+            name: 'textBox3'
+        },
+        {
+            title: 'General Impression',
+            placeholder: 'Describe the environment in which the candidate works. Describe any guidance or management experience.',
+            name: 'textBox3'
+        }
+    ];
+
+    const textAreas = obj.map(function (element) {
+        return textArea(element);
+    }).join('');
+
+    return `
+        ${textAreas}
+    `
+}
+
+
+
+const DropDownListItem = function (option) {
+    return `
+    <li>
+    <label>${option.label}</label>
+    <select name = "${option.name}">
+        <option selected disabled> Choose </option>
+        <option value="1">V1</option>
+        <option value="2">V2</option>
+        <option value="3">V3</option>					
+    </select>
+    </li>
+    `
+}
+
+const FieldSet = function (option) {
+    const fieldSetList = option.items.map(function (element) {
+        return DropDownListItem(element)
+    }).join('');
+
     return `
     <fieldset>
-        <legend>OOP, Design Patterns</legend>
-            <ul>
-                <li>Classes
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Exception handling
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Version Control
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Access modifiers
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Design Patterns
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Issue Tracking
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Polymorphism
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>RegEx
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-            </ul>
+    <legend>${option.legend}</legend>
+        <ul>
+            ${fieldSetList}
+        </ul>
     </fieldset>
+    `
+}
 
-    <fieldset>
-        <legend>HTTP</legend>
-            <ul>
-                <li>Protocol
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Response codes
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>REST
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Headers
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Request methods
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Sessions &amp Cookies
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-            </ul>
-    </fieldset>
+const DropdownSelector = function (option) {
+    const dropDowns = [{
+        legend: 'OOP, Design Patterns',
+        items: [{
+            label: 'Classes',
+            name: 'classes'
+        },
+        {
+            label: 'Exception handling',
+            name: 'exceptionHandling'
+        },
+        {
+            label: 'Version Control',
+            name: 'versionControl'
+        },
+        {
+            label: 'Access Modifiers',
+            name: 'accessModifier'
+        },
+        {
+            label: 'Design Patterns',
+            name: 'designPatterns'
+        },
+        {
+            label: 'Issue Tracking',
+            name: 'issueTracking'
+        },
+        {
+            label: 'Polymorphism',
+            name: 'polymorphism'
+        },
+        {
+            label: 'RegEx',
+            name: 'regEx'
+        }]
+    },
+    {
+        legend: 'HTTP',
+        items: [{
+            label: 'Protocol',
+            name: 'protocol'
+        },
+        {
+            label: 'Response Codes',
+            name: 'responseCodes'
+        },
+        {
+            label: 'REST',
+            name: 'rest'
+        },
+        {
+            label: 'Headers',
+            name: 'headers'
+        },
+        {
+            label: 'Request Methods',
+            name: 'requestMethods'
+        },
+        {
+            label: 'Sessions &amp; Cookies',
+            name: 'sessions'
+        }]
+    },
+    {
+        legend: 'HTML',
+        items: [{
+            label: 'Doctype',
+            name: 'doctype'
+        },
+        {
+            label: 'Tags',
+            name: 'tags'
+        },
+        {
+            label: 'Basic SEO',
+            name: 'basicSeo'
+        },
+        {
+            label: 'Syntax rules',
+            name: 'syntaxRules'
+        },
+        {
+            label: 'Attributes',
+            name: 'attributes'
+        }]
+    }, {
+        legend: 'CSS',
+        items: [{
+            label: 'Usage',
+            name: 'usage'
+        },
+        {
+            label: 'Box Modeling',
+            name: 'boxModeling'
+        },
+        {
+            label: 'CSS 3.0',
+            name: 'css'
+        },
+        {
+            label: 'Selectors',
+            name: 'selectors'
+        },
+        {
+            label: 'Styling',
+            name: 'styling'
+        },
+        {
+            label: 'Dynamic Stylesheets',
+            name: 'dynamicStylesheet'
+        }]
+    }, {
+        legend: 'Javascript',
+        items: [{
+            label: 'Data types &amp; variables',
+            name: 'dataTypesAndVariables'
+        },
+        {
+            label: 'Object Manipulation',
+            name: 'objectManipulation'
+        },
+        {
+            label: 'DOM Manipulation',
+            name: 'domManipulation'
+        },
+        {
+            label: 'Functions',
+            name: 'functions'
+        },
+        {
+            label: 'Templating',
+            name: 'templating'
+        },
+        {
+            label: 'Event Handling',
+            name: 'eventHandling'
+        },
+        {
+            label: 'Prototype &amp; OOP',
+            name: 'prototype'
+        },
+        {
+            label: 'Testing(unit, E2E)',
+            name: 'testing'
+        },
+        {
+            label: 'AJAX',
+            name: 'ajax'
+        },
+        {
+            label: 'Debugging',
+            name: 'debugging'
+        },
+        {
+            label: 'Websockets',
+            name: 'websockets'
+        },
+        {
+            label: 'Tooling',
+            name: 'tooling'
+        }, {
+            label: 'Libraries',
+            name: 'libraries'
+        }, {
+            label: 'Promises',
+            name: 'promises'
+        }, {
+            label: 'Browser Engines',
+            name: 'browserEngines'
+        }, {
+            label: 'Frameworks',
+            name: 'frameworks'
+        }]
+    }, {
+        legend: 'NodeJs',
+        items: [{
+            label: 'Backend Frameworks',
+            name: 'backendFrameworks'
+        },
+        {
+            label: 'Templating',
+            name: 'templating'
+        },
+        {
+            label: 'DOM Manipulation',
+            name: 'domM'
+        },
+        {
+            label: 'Unit Testing',
+            name: 'unitT'
+        }]
+    }];
 
-    <fieldset>
-        <legend>HTML</legend>
-            <ul>
-                <li>Doctype
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Tags
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Basic SEO
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Syntax rules
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Attributes
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-            </ul>
-    </fieldset>
+    const fieldSetListString = dropDowns.map(function (element) {
+        return FieldSet(element)
+    }).join('');
+    return fieldSetListString;
+}
 
-    <fieldset>
-        <legend>CSS</legend>
-            <ul>
-                <li>Usage
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Box modeling
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>CSS 3.0
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Selectors
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Styling
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Dynamic Stylesheets
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-            </ul>
-    </fieldset>
-
-    <fieldset>
-        <legend>Javascript</legend>
-            <ul>
-                <li>Data types &amp variables
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Object manipulation
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>DOM Manipulation
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Functions
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Templating
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Event Handling
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Prototype &amp OOP
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Testing(unit, E2E)
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Ajax
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Debugging
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Websockets
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Tooling
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Libraries
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Promises
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Browser Engines
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-                <li>Frameworks
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-            </ul>
-    </fieldset>
-
-    <fieldset>
-        <legend>NodeJS</legend>
-            <ul>
-                <li>Backend frameworks
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Templating
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>DOM Manipulation
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>					
-                    </select>
-                </li>
-                <li>Unit Testing
-                    <select>
-                        <option selected disabled> Choose </option>
-                        <option value="1">V1</option>
-                        <option value="2">V2</option>
-                        <option value="3">V3</option>
-                    </select>
-                </li>
-            </ul>
-    </fieldset>
-    <input type="submit" value="Submit" class="submit_button" />
-    `;
-};
-
-const CandidatePage = function(option){
+const CandidatePage = function (option) {
     return `
     <section class="body_section">
     <form action="Evaluations_page.html">
     ${CandidateDetailsForm({})}
     ${TechnicalLevelPicker({})}
-    ${Textarea({})}
+    ${textAreaSection({})}
     ${DropdownSelector({})}
+    <input type="submit" value="Submit" class="submit_button" />
     </form>
     </section>
     `
 }
 
-const Footer = function(option){
-    return `
-    <section class="footer_section">
-    <footer>
-        <p>Copyright@Softvision 2017</p>
-    </footer>		
-    </section>
-    `
-}
-
-const NewEvaluationPage = function(option){
+const NewEvaluationPage = function (option) {
     return `
     ${NAV({})}
     ${CandidatePage({})}
@@ -489,6 +360,6 @@ const NewEvaluationPage = function(option){
     `
 }
 
-window.onload = function(){
-    document.querySelector('#app').innerHTML=NewEvaluationPage({});
+window.onload = function () {
+    document.querySelector('#app').innerHTML = NewEvaluationPage({});
 }

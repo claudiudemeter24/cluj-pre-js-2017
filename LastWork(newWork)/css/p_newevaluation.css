@@ -1,155 +1,161 @@
-.image{
-	width: 150px;
-	height: 30px;
-	margin-left: 50px;
+.image {
+    width: 150px;
+    height: 30px;
+    margin-left: 50px;
 }
 
-.header{
-	width: 100%;
-	height: 55px;
-	border-bottom: 1px solid;
-	display: inline-flex;
-	align-items: center;
-	box-shadow: 0px 3px 10px grey;
+.header {
+    width: 100%;
+    height: 55px;
+    border-bottom: 1px solid;
+    display: inline-flex;
+    align-items: center;
+    box-shadow: 0px 3px 10px grey;
 }
 
-.header_div{
-	display: flex;
-	width: 1200px;
-	margin: 0 auto;
+.header_div {
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
 }
 
-.body_section{
-	display: flex;
-	width: 1200px;
-	height: 100%;
-	margin: 0 auto;
+.body_section {
+    display: flex;
+    width: 1200px;
+    height: 100%;
+    margin: 0 auto;
 }
 
-.eval_button{
-	text-decoration: none;
-	padding: 0px 50px;
-	float:left;
-	margin-bottom: 0px;
+.eval_button {
+    text-decoration: none;
+    padding: 0px 50px;
+    float: left;
+    margin-bottom: 0px;
 }
 
-.neweval_button{
-	border-bottom: 10px solid;
-	border-bottom-color: #03a8f3;
-	text-decoration: none;
-	padding: 0px 50px;
-	float: left;
-	margin-bottom: 0px;
+.neweval_button {
+    border-bottom: 10px solid;
+    border-bottom-color: #03a8f3;
+    text-decoration: none;
+    padding: 0px 50px;
+    float: left;
+    margin-bottom: 0px;
 }
 
-.logout{
-	float: right;
-	text-decoration: none;
-	margin-right: 50px;
+.logout {
+    float: right;
+    text-decoration: none;
+    margin-right: 50px;
 }
 
-.footer_section{
-	width: 100%; 
-	height: 100px; 
-	margin-top: 40px;
-	background-color: #DFDFDF;
-	position: absolute;
+.footer_section {
+    width: 100%;
+    height: 100px;
+    margin-top: 40px;
+    background-color: #DFDFDF;
+    position: absolute;
 }
 
-footer{
-	width: 1200px;
-	margin: 0 auto;
+footer {
+    width: 1200px;
+    margin: 0 auto;
 }
 
-footer p{
-	margin: 40px 0px;
-	text-align: right;
-	width: 100%;
+footer p {
+    margin: 40px 0px;
+    text-align: right;
+    width: 100%;
 }
-
 
 .textbox {
-	width: 30%;
-	margin-top: 5%;
-	margin-right: 0.5%;
-	padding: 1%;
-	border: none;
+    width: 30%;
+    margin-top: 5%;
+    margin-right: 0.5%;
+    padding: 1%;
+    border: none;
 }
 
-.textbox::placeholder{
-	border-bottom: 1px solid lightgrey;
-	color: lightgrey;
+.textbox::placeholder {
+    border-bottom: 1px solid lightgrey;
+    color: lightgrey;
 }
 
-.textbox:focus{
-	outline: none;
-	border-bottom: 1px solid #DFDFDF;
+.textbox:focus {
+    outline: none;
+    border-bottom: 1px solid #DFDFDF;
 }
 
 .boxTitle {
-	color: #3090C7;
-	margin-left: 35px;
+    color: #3090C7;
+    margin-left: 35px;
 }
 
-ul{
-	list-style-type: none;
-	padding-left: 15px;
+ul {
+    list-style-type: none;
+    padding-left: 15px;
 }
 
-li{
-	float: left;
-	width: 30%;
-	margin: 5px 25px 15px 0px;
-	font-size: 20px;
+li {
+    float: left;
+    width: 30%;
+    margin: 5px 25px 15px 0px;
+    font-size: 20px;
 }
 
-fieldset{
-	margin-top: 50px;
+fieldset {
+    margin-top: 50px;
 }
 
-textarea{
-	height: 100px;
-	resize: none;
-	width: 100%;
-	box-sizing: border-box;;
+textarea {
+    height: 100px;
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;;
 }
 
-select{
-	float: right;
-	width: 140px;
-	height: 40px;
+select {
+    float: right;
+    width: 140px;
+    height: 40px;
 }
 
-legend{
-	color: #3090C7;
-	font-size: 22px;
-	font-weight: bold;
-	padding: 0px 20px;
+legend {
+    color: #3090C7;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 0px 20px;
 }
 
-#radio_select{
-	width: 100%;
-	height: 100px;
-	border: 1px solid black;
+#radio_select {
+    width: 100%;
+    height: 100px;
+    border: 1px solid black;
 }
 
-#radio_select_header{
-	width: 100%;
-	height: 50px;
-	background-color: lightblue;
+#radio_select_header {
+    width: 100%;
+    height: 50px;
+    background-color: lightblue;
 }
 
-span{
-	margin-left: 40px;
-	margin-right: 250px;
+span {
+    width: 24%;
+    display: inline-block;
+    text-align: center;
 }
 
-.submit_button{
-	margin-top: 40px;
-	padding: 10px 40px;
-	font-size: 15px;
-	color: #ffffff;
-	background-color: #03a8f3;
-	float:right;
-	box-shadow: 0px 5px 10px grey;
+.submit_button {
+    margin-top: 40px;
+    padding: 10px 40px;
+    font-size: 15px;
+    color: #ffffff;
+    background-color: #03a8f3;
+    float: right;
+    box-shadow: 0px 5px 10px grey;
+}
+
+.groupRadioButtons {
+    width: 24%;
+    display: inline-block;
+    text-align: center;
 }
