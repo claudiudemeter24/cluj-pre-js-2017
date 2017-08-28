@@ -49,7 +49,7 @@ function EvaluationsTableBody(option) {
 
 function EvaluationsTable(option) {
     return `
-    <section class="body_section">
+    <section class="table_body_section">
     <table class="table">
             ${EvaluationsTableHeader({
         headings: option.itemHeadings,
@@ -89,11 +89,12 @@ function EvaluationsPage(option) {
 
 
     return `
-
+    ${NAV('Eval')}
     ${EvaluationsTable({
         items: rows,
         itemHeadings: headings,
     })}
+    ${Footer()}
     `;
 }
 

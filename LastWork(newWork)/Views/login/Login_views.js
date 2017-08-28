@@ -5,7 +5,7 @@ const LoginForm = function (option) {
         <h1>Interview Feedback</h1>
     </div>
     <div class="loginform_body">
-        <form id="loginFormId" action="Evaluations_page.html">
+        <form id="loginFormId">
             <input type="text" id="username" placeholder="Username" name="name_box" class="loginform_body_input" />
             <input type="password" id="password" placeholder="Password" name="pass_box" class="loginform_body_input" />
             <!--<a href="ex2.html">Login</a>
@@ -33,8 +33,8 @@ const SubmitFeedbackSection = function (option) {
     <div class="grid div_padding">
         <img src="assets/new-feedback.jpg" class="col1 image">
         <article class="col2">
-            <h1>Submit new feedback</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra
+            <h1 class="text_title">Submit new feedback</h1>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra
                nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus,
                tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque
                nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in
@@ -54,8 +54,8 @@ const SubmitFeedbackResults = function (option) {
     <section class="section_height body_section2">
     <div class="grid div_padding">
         <article class="col2">
-            <h1>View feedback results</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra
+            <h1 class="text_title">View feedback results</h1>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra
                nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus,
                tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque
                nec mauris sit amet elit iaculis pretium sit amet quis magna. Aenean velit odio, elementum in

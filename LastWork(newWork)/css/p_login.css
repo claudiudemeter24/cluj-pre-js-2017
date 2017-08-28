@@ -55,9 +55,14 @@ header{
 	height: 400px;
 }
 
-p, h1{
+.text {
 	margin: 70px 100px;
 }
+
+.text_title {
+	margin: 70px 100px;
+}
+
 
 .body_section2{
 	background-color: #EFEEEC;
