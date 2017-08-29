@@ -9,7 +9,7 @@ const CandidateDetailsForm = function (option) {
 const TechnicalLevelPickerHeader = function (option) {
     const levelTitle = option.headers.map((element) => {
         return `
-        <span> ${element} </span>
+        <span class="technicalLevel_span"> ${element} </span>
         `
     });
     return levelTitle.join('');
@@ -352,9 +352,9 @@ const CandidatePage = function (option) {
 
 const NewEvaluationPage = function (option) {
     return `
-    ${NAV({})}
+    ${NAV('newEval')}
     ${CandidatePage({})}
-    
+    ${Footer()}
     `;
 };
 

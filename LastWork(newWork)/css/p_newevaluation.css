@@ -26,22 +26,6 @@
     margin: 0 auto;
 }
 
-.eval_button {
-    text-decoration: none;
-    padding: 0px 50px;
-    float: left;
-    margin-bottom: 0px;
-}
-
-.neweval_button {
-    border-bottom: 10px solid;
-    border-bottom-color: #03a8f3;
-    text-decoration: none;
-    padding: 0px 50px;
-    float: left;
-    margin-bottom: 0px;
-}
-
 .logout {
     float: right;
     text-decoration: none;
@@ -138,7 +122,7 @@ legend {
     background-color: lightblue;
 }
 
-span {
+.technicalLevel_span {
     width: 24%;
     display: inline-block;
     text-align: center;

@@ -9,14 +9,19 @@ const Footer = function (option) {
 };
 
 const NAV = function (option) {
+    var evalSelected;
+    var newEvalSelected;
+    if (option === 'Eval') {evalSelected = 'button_focus'; }
+    else if (option === 'newEval')
+    { newEvalSelected = 'button_focus'; }
     return `
     <section class="header">
     <img src="assets/logo.jpg" class="logo">
     <div class="header_div">
-        <h1 style="margin-bottom: 0px"><a href="Evaluations_page.html" target="_self" class="eval_button">Evaluations</a></h1>
-        <h1 style="margin-bottom: 0px"><a href="NewEvaluation_page.html" target="_self" class="neweval_button"> New Evaluation</a></h1>
+        <input id="EvalButton" name="evalButton" value="Evaluations" class="NAV_buttons ${evalSelected}" />
+        <input id="newEvalButton" name="newEvalButton" value="New Evaluation" class="NAV_buttons ${newEvalSelected}" />
     </div>
-    <h2><a href="Login_page.html" target="_self" class="logout">Logout</a></h2>
+    <span id="logoutButton" class="logout">Logout</span>
     </section>
     `;
 };
