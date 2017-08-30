@@ -23,7 +23,7 @@ const goNewEvalPag = function () {
     const logoutButton = document.querySelector('#logoutButton');
     logoutButton.addEventListener('click', logpage);
     const submitButton = document.querySelector('#submitButton');
-    submitButton.addEventListener('click', conslog);
+    submitButton.addEventListener('click', aboutObject);
 };
 
 const formEvent = function (event) {
@@ -45,57 +45,34 @@ const checkUserDatas = function (user, pass) {
     return false;
 };
 
-function check(elem) {
-    return elem.checked === true;
-}
-
-const conslog = function (event) {
+const aboutObject = function (event) {
     event.stopPropagation();
     event.preventDefault();
 
-    const CandidateName = document.querySelector('#CandName').value;
-    const InterviewerName = document.querySelector('#IntervName').value;
-    const IntervDate = document.querySelector('#dateForm').value;
-
-    const TechnicalLevel = document.querySelectorAll('#b');
-    const TechnicalLevelRadios = Array.prototype.slice.call(TechnicalLevel);
-    const radioChecked = TechnicalLevelRadios.find(check).value;
-
-    console.log(document.querySelector('#workLeaderSkill'));
-    const WorkflowLeadershipSkills = document.querySelector('#workLeaderSkill').value;
-    const Hired = document.querySelector('#beHired').value;
-    const Impression = document.querySelector('#impression').value;
-
-    const OOPDesignPattern = document.querySelector()
-
-    const newEvaluationPageValues = {
-        IntroDetails: {
-            Candidate: CandidateName,
-            Interviewer: InterviewerName,
-            IntervDate: IntervDate,
-        },
-        TechnicalLevel: {
-            Level: radioChecked,
-        },
-        WorkflowLeadershipSkills: {
-            text: WorkflowLeadershipSkills,
-        },
-        Hired: {
-            text: Hired,
-        },
-        Impression: {
-            text: Impression,
-        },
-        OOPDesignPattern: {
-            ${label}: ${value},
-
+    const dynamic = {};
+    const dropDowns = document.querySelectorAll('select');
+    const textAreas = document.querySelectorAll('textarea');
+    const candInputs = document.querySelectorAll('input');
+    console.log(dropDowns);
+    dropDowns.forEach((e) => {
+        dynamic[e.name] = e.value;
+    });
+    textAreas.forEach((e) => {
+        dynamic[e.name] = e.value;
+    });
+    candInputs.forEach((e) => {
+        if (e.type === 'text' || e.type === 'date' || e.checked) {
+            dynamic[e.name] = e.value;
         }
-    };
+    });
 
-    console.log(newEvaluationPageValues);
-};
+    console.log(dynamic);
 
-const evalSubmit = function () {
-    const submitButton = document.querySelector('#submitButton');
-    submitButton.addEventListener('click', conslog);
+    const StorageLength = localStorage.length;
+    let evaluationsList = [];
+    if (StorageLength !== 0) {
+        evaluationsList = JSON.parse(localStorage.getItem('evaluationsList'));
+    }
+    evaluationsList.push(dynamic);
+    localStorage.setItem('evaluationsList', JSON.stringify(evaluationsList));
 };

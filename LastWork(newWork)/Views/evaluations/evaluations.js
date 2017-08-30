@@ -10,6 +10,7 @@ function EvaluationsTableHeader(option) {
     <tr style="background-color: #03a8f3; color: white; font-size: 150%">
     ${headingsEl}
     <th></th>
+    <th style="width: 40px"></th>
     </tr>
     `;
 }
@@ -17,10 +18,13 @@ function EvaluationsTableHeader(option) {
 function EvaluationsTableRow(option) {
     return `
     <tr>
-        <td>${option.name}</td>
-        <td>${option.technology}</td>
-        <td>${option.level}</td>
+        <td>${option.CandName}</td>
+        <td>${option.dateForm}</td>
+        <td>${option.b}</td>
         <th>Detalii</th>
+        <td style="width: 40px">
+            <div class="detail_button">+</div>
+        </td>
     </tr>
     `;
 }
@@ -64,28 +68,29 @@ function EvaluationsTable(option) {
 
 function EvaluationsPage(option) {
     const headings = ['Nume', 'Tehnologie', 'Nivel'];
-    const rows = [
-        {
-            name: 'Popescu Adrian',
-            technology: 'Javascript',
-            level: 'Mid 2',
-        },
-        {
-            name: 'Dragan Roxana',
-            technology: 'PHP',
-            level: 'Mid 1',
-        },
-        {
-            name: 'Florescu Mihai',
-            technology: 'Javascript',
-            level: 'Junior 3',
-        },
-        {
-            name: 'Gheorghe Andrei',
-            technology: 'Ruby',
-            level: 'Senior 1',
-        },
-    ];
+    const rows = JSON.parse(localStorage.getItem('evaluationsList'));
+    // const rows = [
+    //     {
+    //         name: 'Popescu Adrian',
+    //         technology: 'Javascript',
+    //         level: 'Mid 2',
+    //     },
+    //     {
+    //         name: 'Dragan Roxana',
+    //         technology: 'PHP',
+    //         level: 'Mid 1',
+    //     },
+    //     {
+    //         name: 'Florescu Mihai',
+    //         technology: 'Javascript',
+    //         level: 'Junior 3',
+    //     },
+    //     {
+    //         name: 'Gheorghe Andrei',
+    //         technology: 'Ruby',
+    //         level: 'Senior 1',
+    //     },
+    // ];
 
 
     return `
