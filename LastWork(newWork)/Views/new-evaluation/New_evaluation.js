@@ -1,26 +1,22 @@
 const CandidateDetailsForm = function (option) {
     return `
-    <input class="textbox" type="text" placeholder="Candidate" name="CandName">
-    <input class="textbox" type="text" placeholder="Interviewer" name="IntervName">
-    <input class="textbox" type="date" name="ddate">
+    <input id="CandName" class="textbox" type="text" placeholder="Candidate" name="CandName">
+    <input id="IntervName" class="textbox" type="text" placeholder="Interviewer" name="IntervName">
+    <input id="dateForm" class="textbox" type="date" name="dateForm">
     `;
 };
 
 const TechnicalLevelPickerHeader = function (option) {
-    const levelTitle = option.headers.map((element) => {
-        return `
+    const levelTitle = option.headers.map(element => `
         <span class="technicalLevel_span"> ${element} </span>
-        `
-    });
+        `);
     return levelTitle.join('');
 };
 
 const TechnicalLevelPickerInputs = function (option) {
-    const inputsArr = option.map((element) => {
-        return `
-             <input type="radio" style="" name="b" value = "${element}">
-            `
-    });
+    const inputsArr = option.map(element => `
+             <input type="radio" id="b" name="b" value = "${element}">
+            `);
     return `
         <div class="groupRadioButtons">
         ${inputsArr.join('')}
@@ -28,11 +24,9 @@ const TechnicalLevelPickerInputs = function (option) {
 };
 
 const TechnicalLevelPickerBody = function (option) {
-    const radioList = option.columnData.map((element) => {
-        return `
+    const radioList = option.columnData.map(element => `
         ${TechnicalLevelPickerInputs(element.inputLevels)}
-        `
-    });
+        `);
     return radioList.join('');
 };
 
@@ -70,7 +64,7 @@ const TechnicalLevelPicker = function (option) {
 const textArea = function (option) {
     return `
     <h1 class="boxTitle" name="${option.name}">${option.title}</h1>
-    <textarea placeholder="${option.placeholder}"></textarea>
+    <textarea id="${option.id}" placeholder="${option.placeholder}"></textarea>
     `;
 };
 
@@ -80,33 +74,28 @@ const textAreaSection = function (option) {
             title: 'Workflow, Leadership &amp Soft Skills',
             placeholder: 'The type of project that is suitable for the candidate Is guidance required for the candidate',
             name: 'textBox1',
+            id: 'workLeaderSkill',
         },
         {
             title: 'Should the candidate be hired?',
             placeholder: '*required',
             name: 'textBox2',
+            id: 'beHired',
         },
         {
             title: 'General Impression',
             placeholder: 'Describe the environment in which the candidate works. Describe any guidance or management experience.',
             name: 'textBox3',
-        },
-        {
-            title: 'General Impression',
-            placeholder: 'Describe the environment in which the candidate works. Describe any guidance or management experience.',
-            name: 'textBox3',
+            id: 'impression',
         },
     ];
 
-    const textAreas = obj.map((element) => {
-        return textArea(element);
-    }).join('');
+    const textAreas = obj.map(element => textArea(element)).join('');
 
     return `
         ${textAreas}
     `;
 };
-
 
 const DropDownListItem = function (option) {
     return `
@@ -114,18 +103,17 @@ const DropDownListItem = function (option) {
     <label>${option.label}</label>
     <select name = "${option.name}">
         <option selected disabled> Choose </option>
-        <option value="1">V1</option>
-        <option value="2">V2</option>
-        <option value="3">V3</option>					
+        <option value="0">None</option>
+        <option value="1">Low</option>
+        <option value="2">Medium</option>
+        <option value="3">High</option>					
     </select>
     </li>
     `;
 };
 
 const FieldSet = function (option) {
-    const fieldSetList = option.items.map((element) => {
-        return DropDownListItem(element)
-    }).join('');
+    const fieldSetList = option.items.map(element => DropDownListItem(element)).join('');
 
     return `
     <fieldset>
@@ -330,24 +318,23 @@ const DropdownSelector = function (option) {
         }],
     }];
 
-    const fieldSetListString = dropDowns.map((element) => {
-        return FieldSet(element)
-    }).join('');
+    const fieldSetListString = dropDowns.map(element => FieldSet(element)).join('');
     return fieldSetListString;
 };
 
 const CandidatePage = function (option) {
     return `
     <section class="body_section">
-    <form action="Evaluations_page.html">
+    <form id="candForm">
     ${CandidateDetailsForm({})}
     ${TechnicalLevelPicker({})}
     ${textAreaSection({})}
     ${DropdownSelector({})}
-    <input type="submit" value="Submit" class="submit_button" />
+    <input id="submitButton" type="submit" value="Submit" class="submit_button" />
     </form>
     </section>
-    `;
+    `
+    newEvaluationPageValues;
 };
 
 const NewEvaluationPage = function (option) {
