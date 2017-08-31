@@ -15,7 +15,7 @@ const TechnicalLevelPickerHeader = function (option) {
 
 const TechnicalLevelPickerInputs = function (option) {
     const inputsArr = option.map(element => `
-             <input type="radio" id="b" name="b" value = "${element}">
+             <input type="radio" class="b" name="b" value = "${element}">
             `);
     return `
         <div class="groupRadioButtons">
@@ -101,7 +101,7 @@ const DropDownListItem = function (option) {
     return `
     <li>
     <label>${option.label}</label>
-    <select name = "${option.name}">
+    <select id="${option.name}" name = "${option.name}">
         <option selected disabled> Choose </option>
         <option value="0">None</option>
         <option value="1">Low</option>
@@ -306,7 +306,7 @@ const DropdownSelector = function (option) {
         },
         {
             label: 'Templating',
-            name: 'templating',
+            name: 'ntemplating',
         },
         {
             label: 'DOM Manipulation',
