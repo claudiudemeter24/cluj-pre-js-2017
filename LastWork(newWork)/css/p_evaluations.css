@@ -62,11 +62,10 @@
 	border-collapse: collapse;
 }
 
-.table td, th 
-{
-	box-shadow: 0px 1px 0px #888888;
-	text-align: left;
-	padding: 2%;
+.details_button {
+    box-shadow: 0px 1px 0px #888888;
+    text-align: left;
+    padding: 2%;
 }
 
 .footer_section{
@@ -95,4 +94,6 @@ footer p{
     text-align: center;
     font-size: 40px;
     cursor: pointer;
+    margin: 0px 20px;
+    color: #ffffff;
 }

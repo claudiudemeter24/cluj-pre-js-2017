@@ -72,7 +72,7 @@ const textAreaSection = function (option) {
     const obj = [
         {
             title: 'Workflow, Leadership &amp Soft Skills',
-            placeholder: 'The type of project that is suitable for the candidate Is guidance required for the candidate',
+            placeholder: 'The type of project that is suitable for the candidate.&#10;Is guidance required for the candidate',
             name: 'textBox1',
             id: 'workLeaderSkill',
         },
