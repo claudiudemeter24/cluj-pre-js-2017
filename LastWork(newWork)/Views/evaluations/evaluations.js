@@ -1,7 +1,7 @@
 function EvaluationsTableHeader(option) {
     const headings = [];
     option.headings.forEach((el) => {
-        const generatedEl = `<th>${el}</th>`;
+        const generatedEl = `<th class="details_button">${el}</th>`;
         headings.push(generatedEl);
     });
     const headingsEl = headings.join('');
@@ -9,7 +9,7 @@ function EvaluationsTableHeader(option) {
     return `
     <tr style="background-color: #03a8f3; color: white; font-size: 150%">
     ${headingsEl}
-    <th></th>
+    <th class="details_button"></th>
     <th style="width: 40px"></th>
     </tr>
     `;
@@ -17,12 +17,12 @@ function EvaluationsTableHeader(option) {
 
 function EvaluationsTableRow(option) {
     return `
-    <tr>
-        <td>${option.CandName}</td>
-        <td>${option.dateForm}</td>
-        <td>${option.b}</td>
-        <th>Detalii</th>
-        <td style="width: 40px">
+    <tr class="details_button">
+        <td class="details_button">${option.CandName}</td>
+        <td class="details_button">${option.dateForm}</td>
+        <td class="details_button">${option.b}</td>
+        <th style="text-align: right; margin-right: 10px">Detalii</th>
+        <td id="detailsDivId"style="width: 40px">
             <div class="detail_button">+</div>
         </td>
     </tr>
