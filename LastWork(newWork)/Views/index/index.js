@@ -20,36 +20,15 @@ const logout = function () {
     forLoginPage();
 };
 
-const detailForm = function () {
-    // const div = document.createElement('div');
-    // div.appendChild = document.getElementById('detailsDivId').innerHTML;
-    // document.body.appendChild(div);
-
-    // div.style.backgroundColor = 'black';
-    // div.style.position = 'absolute';
-    // div.style.left = '50px';
-    // div.style.top = '50px';
-    // div.style.height = '10px';
-    // div.style.width = '10px';
-
-    // const detailDiv = document.createElement('div');
-    // detailDiv.style.backgroundColor = 'black';
-    // detailDiv.style.position = 'absolute';
-    // detailDiv.style.left = '50px';
-    // detailDiv.style.top = '50px';
-    // detailDiv.style.height = '10px';
-    // detailDiv.style.width = '10px';
-    // document.getElementById('detailsDivId')[0].appendChild(detailDiv);
-};
-
 const goEvalPag = function () {
     document.querySelector('#app').innerHTML = EvaluationsPage();
     const NAVnewEvalButton = document.querySelector('#newEvalButton');
     NAVnewEvalButton.addEventListener('click', goNewEvalPag);
     const logoutButton = document.querySelector('#logoutButton');
     logoutButton.addEventListener('click', logout);
-    const detailsButton = document.querySelector('.detail_button');
-    detailsButton.addEventListener('click', detailForm);
+    // const detailsButton = document.querySelector('.detail_button');
+    // detailsButton.addEventListener('click', detailForm);
+    detailForm();
 };
 
 const goNewEvalPag = function () {
@@ -109,7 +88,34 @@ const aboutObject = function (event) {
     if (StorageLength !== 0) {
         evaluationsList = JSON.parse(localStorage.getItem('evaluationsList'));
     }
+    evalObject.id = (evalObject.CandName + evalObject.dateForm).replace(/\s/g, '');
     evaluationsList.push(evalObject);
     localStorage.setItem('evaluationsList', JSON.stringify(evaluationsList));
     goEvalPag();
+};
+
+const detailForm = function () {
+    const popUpForm = document.getElementById('PopUp');
+
+    const btns = document.getElementsByClassName('detail_button');
+    const btnsArray = Array.prototype.slice.call(btns);
+    const span = document.querySelector('.closePopUp');
+
+    btnsArray.forEach((btn) => {
+        const buttonDetails = function () {
+            popUpForm.style.display = 'block';
+        };
+        btn.addEventListener('click', buttonDetails);
+    });
+
+    const PopUpExit = function () {
+        popUpForm.style.display = 'none';
+    };
+    span.addEventListener('click', PopUpExit);
+
+    window.onclick = function (event) {
+        if (event.target === popUpForm) {
+            popUpForm.style.display = 'none';
+        }
+    };
 };
