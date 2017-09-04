@@ -143,3 +143,8 @@ legend {
     display: inline-block;
     text-align: center;
 }
+
+.radioInput {
+    transform: scale(1.5);
+    margin: 15px;
+}

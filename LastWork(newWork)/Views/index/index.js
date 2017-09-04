@@ -1,13 +1,28 @@
-const forLoginPage = function () {
-    document.querySelector('#app').innerHTML = LoginPage();
-    const form = document.querySelector('#loginFormId');
-    form.addEventListener('submit', formEvent);
+const forLoginPage = {
+    init(option) {
+        document.querySelector('#app').innerHTML =
+    `	
+    <div id="app">
+    
+    </div>
+    `;
+    },
+    destroy(option) {
+        document.querySelector('#app').innerHTML = '';
+    },
 };
+
+
+// const forLoginPage = function () {
+//     document.querySelector('#app').innerHTML = LoginPage();
+//     const form = document.querySelector('#loginFormId');
+//     form.addEventListener('submit', formEvent);
+// };
 
 window.addEventListener('load', () => {
     const LoggedIn = !!sessionStorage.getItem('userName');
     if (!LoggedIn) {
-        forLoginPage();
+        forLoginPage.init();
     } else {
         goEvalPag();
     }
@@ -26,8 +41,6 @@ const goEvalPag = function () {
     NAVnewEvalButton.addEventListener('click', goNewEvalPag);
     const logoutButton = document.querySelector('#logoutButton');
     logoutButton.addEventListener('click', logout);
-    // const detailsButton = document.querySelector('.detail_button');
-    // detailsButton.addEventListener('click', detailForm);
     detailForm();
 };
 

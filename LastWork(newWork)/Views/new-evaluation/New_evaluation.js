@@ -15,7 +15,7 @@ const TechnicalLevelPickerHeader = function (option) {
 
 const TechnicalLevelPickerInputs = function (option) {
     const inputsArr = option.map(element => `
-             <input type="radio" class="b" name="b" value = "${element}">
+             <input type="radio" class="radioInput" name="radioInput" value = "${element}">
             `);
     return `
         <div class="groupRadioButtons">
@@ -333,7 +333,7 @@ const CandidatePage = function (option) {
     <input id="submitButton" type="submit" value="Submit" class="submit_button" />
     </form>
     </section>
-    `
+    `;
     newEvaluationPageValues;
 };
 

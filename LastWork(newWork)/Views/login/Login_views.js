@@ -79,7 +79,3 @@ const LoginPage = function (option) {
     ${Footer({})}
     `;
 };
-
-// window.onload = function () {
-//     document.querySelector('#app').innerHTML = LoginPage({});
-// };

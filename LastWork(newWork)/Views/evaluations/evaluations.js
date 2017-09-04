@@ -16,11 +16,19 @@ function EvaluationsTableHeader(option) {
 }
 
 function EvaluationsTableRow(option) {
+    function TechnicalLevelValues() {
+        return `
+        <tr>
+        <th></th>
+        <td>...</td>
+      </tr>
+        `;
+    }
     return `
     <tr class="details_button">
         <td class="details_button">${option.CandName}</td>
         <td class="details_button">${option.dateForm}</td>
-        <td class="details_button">${option.b}</td>
+        <td class="details_button">${option.radioInput}</td>
         <th style="text-align: right; margin-right: 10px">Detalii</th>
         <td style="width: 40px">
             <div class="detail_button">+</div>
@@ -45,7 +53,7 @@ function EvaluationsTableRow(option) {
                 </tr>
                 <tr>
                   <th>Technical Level</th>
-                  <td>...</td>
+                  <td>${TechnicalLevelValues()}</td>
                 </tr>
                 <tr>
                   <th>Workflow, Leadership &amp Soft Skills</th>
@@ -88,9 +96,9 @@ function EvaluationsTableBody(option) {
     `
     */
 
-    const rowsElements = option.items.map((rowObj) => 
-         EvaluationsTableRow(rowObj)
-        //rowsElements.push(generatedRow)
+    const rowsElements = option.items.map(rowObj =>
+        EvaluationsTableRow(rowObj),
+        // rowsElements.push(generatedRow)
     );
     const rowsEl = rowsElements.join('');
     return `
