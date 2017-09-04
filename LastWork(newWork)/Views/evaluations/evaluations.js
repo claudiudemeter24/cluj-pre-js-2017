@@ -22,8 +22,55 @@ function EvaluationsTableRow(option) {
         <td class="details_button">${option.dateForm}</td>
         <td class="details_button">${option.b}</td>
         <th style="text-align: right; margin-right: 10px">Detalii</th>
-        <td id="detailsDivId"style="width: 40px">
+        <td style="width: 40px">
             <div class="detail_button">+</div>
+            <div id="PopUp" class="PopUpForm">   
+
+              <div class="PopUpcontent">
+                <span class="closePopUp">&times;</span>
+
+                <table class="popUpTable">
+                <caption class="popUpTableCaption">Candidate details</caption>
+                <tr>
+                  <th>Candidate</th>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <th>Interviewer</th>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <th>Date</th>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <th>Technical Level</th>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <th>Workflow, Leadership &amp Soft Skills</th>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <th>Should the candidate be hired?</th>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <th>General Impression</th>
+                  <td>...</td>
+                </tr>
+                <tr>
+                  <th>Workflow, Leadership &amp Soft Skills</th>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>Technologies</th>
+                  <td><p></p></td>
+                </tr>
+              </table>
+              </div>
+            
+            </div>
         </td>
     </tr>
     `;
@@ -67,7 +114,7 @@ function EvaluationsTable(option) {
 }
 
 function EvaluationsPage(option) {
-    const headings = ['Nume', 'Tehnologie', 'Nivel'];
+    const headings = ['Nume', 'Data', 'Nivel'];
     const rows = JSON.parse(localStorage.getItem('evaluationsList'));
     // const rows = [
     //     {
