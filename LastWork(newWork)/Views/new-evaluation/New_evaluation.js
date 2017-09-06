@@ -344,7 +344,3 @@ const NewEvaluationPage = function (option) {
     ${Footer()}
     `;
 };
-
-// window.onload = function () {
-//     document.querySelector('#app').innerHTML = NewEvaluationPage({});
-// };

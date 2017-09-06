@@ -1,5 +1,5 @@
 const LoginForm = {
-    init(option) {
+    init() {
         document.querySelector('#loginForm').innerHTML =
     `<div class="loginform_div col1">
     <div class="loginform_header">
@@ -15,29 +15,29 @@ const LoginForm = {
     </div>
     `;
     },
-    destroy(option) {
+    destroy() {
         document.querySelector('#loginForm').innerHTML = '';
     },
 };
 
 const LoginHeader = {
-    init(option) {
+    init() {
         document.querySelector('#loginHeader').innerHTML =
     `
     <section class="head_section">
-    <header class="grid">
-    ${LoginForm({})}
+    <header id="loginForm" class="grid">
     </header>
     </section>
     `;
+        LoginForm.init();
     },
-    destroy(option) {
+    destroy() {
         document.querySelector('#loginHeader').innerHTML = '';
     },
 };
 
 const SubmitFeedbackSection = {
-    init(option) {
+    init() {
         document.querySelector('#submitFeedbackSection').innerHTML =
     `
     <section class="section_height">
@@ -59,13 +59,13 @@ const SubmitFeedbackSection = {
     </section>
     `;
     },
-    destroy(option) {
+    destroy() {
         document.querySelector('#submitFeedbackSection').innerHTML = '';
     },
 };
 
 const SubmitFeedbackResults = {
-    init(option) {
+    init() {
         document.querySelector('#submitFeedbackResults').innerHTML =
     ` 
     <section class="section_height body_section2">
@@ -87,22 +87,30 @@ const SubmitFeedbackResults = {
     </section>
     `;
     },
-    destroy(option) {
+    destroy() {
         document.querySelector('#submitFeedbackResults').innerHTML = '';
     },
 };
 
 const LoginPage = {
-    init(option) {
+    init() {
         document.querySelector('#loginPage').innerHTML =
     ` 
-    ${LoginHeader({})}
-    ${SubmitFeedbackSection({})}
-    ${SubmitFeedbackResults({})}
-    ${Footer({})}
+    <div id="loginHeader">
+    </div>
+    <div id="submitFeedbackSection">
+    </div>
+    <div id="submitFeedbackResults">
+    </div>
+    <div id="footer">
+    </div>
     `;
+        LoginHeader.init();
+        SubmitFeedbackSection.init();
+        SubmitFeedbackResults.init();
+        Footer.init();
     },
-    destroy(option) {
+    destroy() {
         document.querySelector('#loginPage').innerHTML = '';
     },
 };

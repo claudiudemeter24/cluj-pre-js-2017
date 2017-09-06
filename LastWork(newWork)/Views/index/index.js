@@ -1,30 +1,25 @@
 const forLoginPage = {
-    init(option) {
+    init() {
         document.querySelector('#app').innerHTML =
-    `	
-    <div id="app">
-    
+    `
+    <div id="loginPage">
     </div>
     `;
+        LoginPage.init();
+        const form = document.querySelector('#loginFormId');
+        form.addEventListener('submit', formEvent);
     },
-    destroy(option) {
+    destroy() {
         document.querySelector('#app').innerHTML = '';
     },
 };
-
-
-// const forLoginPage = function () {
-//     document.querySelector('#app').innerHTML = LoginPage();
-//     const form = document.querySelector('#loginFormId');
-//     form.addEventListener('submit', formEvent);
-// };
 
 window.addEventListener('load', () => {
     const LoggedIn = !!sessionStorage.getItem('userName');
     if (!LoggedIn) {
         forLoginPage.init();
     } else {
-        goEvalPag();
+        goEvalPag.init();
     }
 
     console.log(localStorage);
@@ -32,22 +27,32 @@ window.addEventListener('load', () => {
 
 const logout = function () {
     sessionStorage.removeItem('userName');
-    forLoginPage();
+    forLoginPage.init();
 };
 
-const goEvalPag = function () {
-    document.querySelector('#app').innerHTML = EvaluationsPage();
-    const NAVnewEvalButton = document.querySelector('#newEvalButton');
-    NAVnewEvalButton.addEventListener('click', goNewEvalPag);
-    const logoutButton = document.querySelector('#logoutButton');
-    logoutButton.addEventListener('click', logout);
-    detailForm();
+const goEvalPag = {
+    init() {
+        document.querySelector('#app').innerHTML =
+        `
+        <div id="evaluationsPage">
+        </div>
+        `;
+        EvaluationsPage.init();
+        const NAVnewEvalButton = document.querySelector('#newEvalButton');
+        NAVnewEvalButton.addEventListener('click', goNewEvalPag);
+        const logoutButton = document.querySelector('#logoutButton');
+        logoutButton.addEventListener('click', logout);
+        detailForm();
+    },
+    destroy() {
+        document.querySelector('#app').innerHTML = '';
+    },
 };
 
 const goNewEvalPag = function () {
     document.querySelector('#app').innerHTML = NewEvaluationPage();
     const NAVEvalButton = document.querySelector('#EvalButton');
-    NAVEvalButton.addEventListener('click', goEvalPag);
+    NAVEvalButton.addEventListener('click', goEvalPag.init());
     const logoutButton = document.querySelector('#logoutButton');
     logoutButton.addEventListener('click', logout);
     const submitButton = document.querySelector('#submitButton');
@@ -62,7 +67,7 @@ const formEvent = function (event) {
     const password = document.querySelector('#password').value;
 
     if (checkUserDatas(username, password)) {
-        goEvalPag();
+        goEvalPag.init();
     }
 };
 
@@ -104,7 +109,7 @@ const aboutObject = function (event) {
     evalObject.id = (evalObject.CandName + evalObject.dateForm).replace(/\s/g, '');
     evaluationsList.push(evalObject);
     localStorage.setItem('evaluationsList', JSON.stringify(evaluationsList));
-    goEvalPag();
+    goEvalPag.init();
 };
 
 const detailForm = function () {

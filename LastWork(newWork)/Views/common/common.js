@@ -1,20 +1,26 @@
-const Footer = function (option) {
-    return `
+const Footer = {
+    init() {
+        document.querySelector('#footer').innerHTML =
+    `
     <section class="footer_section">
     <footer>
         <p>Copyright@Softvision 2017</p>
     </footer>		
     </section>	
     `;
+    },
+    destroy() {
+        document.querySelector('#footer').innerHTML = '';
+    },
 };
 
-const NAV = function (option) {
-    var evalSelected;
-    var newEvalSelected;
-    if (option === 'Eval') {evalSelected = 'button_focus'; }
-    else if (option === 'newEval')
-    { newEvalSelected = 'button_focus'; }
-    return `
+const NAV = {
+    init(option) {
+        let evalSelected;
+        let newEvalSelected;
+        if (option === 'Eval') { evalSelected = 'button_focus'; } else if (option === 'newEval') { newEvalSelected = 'button_focus'; }
+        document.querySelector('#nav').innerHTML =
+    `
     <section class="header">
     <img src="assets/logo.jpg" class="logo">
     <div class="header_div">
@@ -24,4 +30,8 @@ const NAV = function (option) {
     <span id="logoutButton" class="logout">Logout</span>
     </section>
     `;
+    },
+    destroy() {
+        document.querySelector('#nav').innerHTML = '';
+    },
 };
