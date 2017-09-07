@@ -1,4 +1,4 @@
-const EvaluationsTableHeader = {
+interviewApp.EvaluationsTableHeader = {
     init(option) {
         const headings = [];
         option.headings.forEach((el) => {
@@ -19,7 +19,7 @@ const EvaluationsTableHeader = {
     },
 };
 
-const EvaluationsTableRow = {
+interviewApp.EvaluationsTableRow = {
     init(option) {
         return `
         <tr class="details_button">
@@ -28,8 +28,8 @@ const EvaluationsTableRow = {
             <td class="details_button">${option.radioInput}</td>
             <th style="text-align: right; margin-right: 10px">Detalii</th>
             <td style="width: 40px">
-                <div class="detail_button">+</div>
-                <div id="PopUp" class="PopUpForm">   
+                <div id="${option.id}" class="detail_button">+</div>
+                <div id="${`${option.id}popUp`}" class="PopUpForm">   
     
                   <div class="PopUpcontent">
                     <span class="closePopUp">&times;</span>
@@ -38,43 +38,59 @@ const EvaluationsTableRow = {
                         <caption class="popUpTableCaption">Candidate details</caption>
                         <tr>
                             <th>Candidate</th>
-                            <td>...</td>
+                            <td colspan="2">${option.CandName}</td>
                         </tr>
                         <tr>
                             <th>Interviewer</th>
-                            <td>...</td>
+                            <td colspan="2">${option.IntervName}</td>
                         </tr>
                         <tr>
                         <th>Date</th>
-                        <td>...</td>
+                        <td colspan="2">${option.dateForm}</td>
                         </tr>
                         <tr>
                         <th>Technical Level</th>
-                        <td>...</td>
-                        </tr>
-                        <tr>
-                        <th>Workflow, Leadership &amp Soft Skills</th>
-                        <td>...</td>
+                        <td colspan="2">${option.radioInput}</td>
                         </tr>
                         <tr>
                         <th>Should the candidate be hired?</th>
-                        <td>...</td>
+                        <td colspan="2">${option.beHired}</td>
                         </tr>
                         <tr>
                         <th>General Impression</th>
-                        <td>...</td>
+                        <td colspan="2">${option.impression}</td>
                         </tr>
                         <tr>
                         <th>Workflow, Leadership &amp Soft Skills</th>
-                        <td></td>
+                        <td colspan="2">${option.workLeaderSkill}</td>
                         </tr>
                         <tr>
-                        <th>Technologies</th>
-                        <td><p></p></td>
+                        <th rowspan="6">Technologies</th>
+                        <td style="width: 15%">${option.legend}</td>
+                        <td>${option}</td>
+                        </tr>
+                        <tr>
+                        <td style="width: 15%">${option.legend}</td>
+                        <td><p>afasdfasd fdasfdasf asdf adsf asdf dasf das das fdas fsad fdas fdsa fda fds gdfsg dfs dfsh dfsg dfs gdfs gdfs gdfs gdfs gdfs gdfs gdfs gdf grewr rg ewrg dfsb gdfsg dfsg dsfg dfsg dfs gdfs gdfs gdfs gdfs gdfs dfs gdsf gdfs gdsf gdfs gdfs </P></td>
+                        </tr>
+                        <tr>
+                        <td style="width: 15%">${option.legend}</td>
+                        <td>${option}</td>
+                        </tr>
+                        <tr>
+                        <td style="width: 15%">${option.legend}</td>
+                        <td>${option}</td>
+                        </tr>
+                        <tr>
+                        <td style="width: 15%">${option.legend}</td>
+                        <td>${option}</td>
+                        </tr>
+                        <tr>
+                        <td style="width: 15%">${option.legend}</td>
+                        <td>${option}</td>
                         </tr>
                   </table>
                   </div>
-                
                 </div>
             </td>
         </tr>
@@ -82,10 +98,10 @@ const EvaluationsTableRow = {
     },
 };
 
-const EvaluationsTableBody = {
+interviewApp.EvaluationsTableBody = {
     init(option) {
         const rowsElements = option.items.map(rowObj =>
-            EvaluationsTableRow.init(rowObj),
+            interviewApp.EvaluationsTableRow.init(rowObj),
         );
         const rowsEl = rowsElements.join('');
         return `
@@ -97,17 +113,17 @@ const EvaluationsTableBody = {
     },
 };
 
-const EvaluationsTable = {
+interviewApp.EvaluationsTable = {
     init(option) {
         document.querySelector('#evaluationsTable').innerHTML =
         `
         <section class="table_body_section">
             <table id="test" class="table">
-                ${EvaluationsTableHeader.init({
-        headings: option.itemHeadings
+                ${interviewApp.EvaluationsTableHeader.init({
+        headings: option.itemHeadings,
     })}
-                ${EvaluationsTableBody.init({
-        items: option.items
+                ${interviewApp.EvaluationsTableBody.init({
+        items: option.items,
     })}
             </table>
         </section>
@@ -118,7 +134,7 @@ const EvaluationsTable = {
     },
 };
 
-const EvaluationsPage = {
+interviewApp.EvaluationsPage = {
     init() {
         const headings = ['Nume', 'Data', 'Nivel'];
         const rows = JSON.parse(localStorage.getItem('evaluationsList'));
@@ -131,12 +147,12 @@ const EvaluationsPage = {
         <div id="footer">
         </div>
         `;
-        NAV.init('Eval');
-        EvaluationsTable.init({
+        interviewApp.NAV.init('Eval');
+        interviewApp.EvaluationsTable.init({
             items: rows,
             itemHeadings: headings,
         });
-        Footer.init();
+        interviewApp.Footer.init();
     },
     destroy() {
         document.querySelector('#evaluationsPage').innerHTML = '';

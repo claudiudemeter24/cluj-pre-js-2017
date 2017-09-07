@@ -1,4 +1,4 @@
-const LoginForm = {
+interviewApp.LoginForm = {
     init() {
         document.querySelector('#loginForm').innerHTML =
     `<div class="loginform_div col1">
@@ -20,7 +20,7 @@ const LoginForm = {
     },
 };
 
-const LoginHeader = {
+interviewApp.LoginHeader = {
     init() {
         document.querySelector('#loginHeader').innerHTML =
     `
@@ -29,14 +29,14 @@ const LoginHeader = {
     </header>
     </section>
     `;
-        LoginForm.init();
+        interviewApp.LoginForm.init();
     },
     destroy() {
         document.querySelector('#loginHeader').innerHTML = '';
     },
 };
 
-const SubmitFeedbackSection = {
+interviewApp.SubmitFeedbackSection = {
     init() {
         document.querySelector('#submitFeedbackSection').innerHTML =
     `
@@ -64,7 +64,7 @@ const SubmitFeedbackSection = {
     },
 };
 
-const SubmitFeedbackResults = {
+interviewApp.SubmitFeedbackResults = {
     init() {
         document.querySelector('#submitFeedbackResults').innerHTML =
     ` 
@@ -92,7 +92,7 @@ const SubmitFeedbackResults = {
     },
 };
 
-const LoginPage = {
+interviewApp.LoginPage = {
     init() {
         document.querySelector('#loginPage').innerHTML =
     ` 
@@ -105,10 +105,10 @@ const LoginPage = {
     <div id="footer">
     </div>
     `;
-        LoginHeader.init();
-        SubmitFeedbackSection.init();
-        SubmitFeedbackResults.init();
-        Footer.init();
+        interviewApp.LoginHeader.init();
+        interviewApp.SubmitFeedbackSection.init();
+        interviewApp.SubmitFeedbackResults.init();
+        interviewApp.Footer.init();
     },
     destroy() {
         document.querySelector('#loginPage').innerHTML = '';

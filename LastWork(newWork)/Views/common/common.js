@@ -1,4 +1,4 @@
-const Footer = {
+interviewApp.Footer = {
     init() {
         document.querySelector('#footer').innerHTML =
     `
@@ -14,7 +14,7 @@ const Footer = {
     },
 };
 
-const NAV = {
+interviewApp.NAV = {
     init(option) {
         let evalSelected;
         let newEvalSelected;

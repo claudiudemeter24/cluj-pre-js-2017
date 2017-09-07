@@ -1,37 +1,5 @@
-const CandidateDetailsForm = function (option) {
-    return `
-    <input id="CandName" class="textbox" type="text" placeholder="Candidate" name="CandName">
-    <input id="IntervName" class="textbox" type="text" placeholder="Interviewer" name="IntervName">
-    <input id="dateForm" class="textbox" type="date" name="dateForm">
-    `;
-};
-
-const TechnicalLevelPickerHeader = function (option) {
-    const levelTitle = option.headers.map(element => `
-        <span class="technicalLevel_span"> ${element} </span>
-        `);
-    return levelTitle.join('');
-};
-
-const TechnicalLevelPickerInputs = function (option) {
-    const inputsArr = option.map(element => `
-             <input type="radio" class="radioInput" name="radioInput" value = "${element}">
-            `);
-    return `
-        <div class="groupRadioButtons">
-        ${inputsArr.join('')}
-        </div>`;
-};
-
-const TechnicalLevelPickerBody = function (option) {
-    const radioList = option.columnData.map(element => `
-        ${TechnicalLevelPickerInputs(element.inputLevels)}
-        `);
-    return radioList.join('');
-};
-
-const TechnicalLevelPicker = function (option) {
-    const obj = {
+interviewApp.newEvalObj = {
+    TechnicalObj: {
         title: 'Technical level',
         headers: ['Trainee', 'Junior', 'Middle', 'Senior'],
         columnData: [
@@ -48,85 +16,31 @@ const TechnicalLevelPicker = function (option) {
                 inputLevels: ['Senior 1', 'Senior 2', 'Senior 3'],
             },
         ],
-    };
+    },
 
-    return `
-    <h1 class="boxTitle">${obj.title}</h1>
-    <div id="radio_select">
-        <div id="radio_select_header">
-            ${TechnicalLevelPickerHeader(obj)}
-        </div>
-            ${TechnicalLevelPickerBody(obj)}
-    </div>
-    `;
-};
 
-const textArea = function (option) {
-    return `
-    <h1 class="boxTitle" name="${option.name}">${option.title}</h1>
-    <textarea id="${option.id}" placeholder="${option.placeholder}"></textarea>
-    `;
-};
-
-const textAreaSection = function (option) {
-    const obj = [
-        {
-            title: 'Workflow, Leadership &amp Soft Skills',
-            placeholder: 'The type of project that is suitable for the candidate.&#10;Is guidance required for the candidate',
-            name: 'textBox1',
-            id: 'workLeaderSkill',
-        },
+    textAreaobj: [
         {
             title: 'Should the candidate be hired?',
             placeholder: '*required',
-            name: 'textBox2',
+            name: 'beHired',
             id: 'beHired',
         },
         {
             title: 'General Impression',
             placeholder: 'Describe the environment in which the candidate works. Describe any guidance or management experience.',
-            name: 'textBox3',
+            name: 'impression',
             id: 'impression',
         },
-    ];
+        {
+            title: 'Workflow, Leadership &amp Soft Skills',
+            placeholder: 'The type of project that is suitable for the candidate.&#10;Is guidance required for the candidate',
+            name: 'workLeaderSkill',
+            id: 'workLeaderSkill',
+        },
+    ],
 
-    const textAreas = obj.map(element => textArea(element)).join('');
-
-    return `
-        ${textAreas}
-    `;
-};
-
-const DropDownListItem = function (option) {
-    return `
-    <li>
-    <label>${option.label}</label>
-    <select id="${option.name}" name = "${option.name}">
-        <option selected disabled> Choose </option>
-        <option value="0">None</option>
-        <option value="1">Low</option>
-        <option value="2">Medium</option>
-        <option value="3">High</option>					
-    </select>
-    </li>
-    `;
-};
-
-const FieldSet = function (option) {
-    const fieldSetList = option.items.map(element => DropDownListItem(element)).join('');
-
-    return `
-    <fieldset>
-    <legend>${option.legend}</legend>
-        <ul>
-            ${fieldSetList}
-        </ul>
-    </fieldset>
-    `;
-};
-
-const DropdownSelector = function (option) {
-    const dropDowns = [{
+    dropDownsObj: [{
         legend: 'OOP, Design Patterns',
         items: [{
             label: 'Classes',
@@ -316,31 +230,163 @@ const DropdownSelector = function (option) {
             label: 'Unit Testing',
             name: 'unitT',
         }],
-    }];
-
-    const fieldSetListString = dropDowns.map(element => FieldSet(element)).join('');
-    return fieldSetListString;
+    }],
 };
 
-const CandidatePage = function (option) {
+interviewApp.CandidateDetailsForm = {
+    init() {
+        return `
+    <input id="CandName" class="textbox" type="text" placeholder="Candidate" name="CandName">
+    <input id="IntervName" class="textbox" type="text" placeholder="Interviewer" name="IntervName">
+    <input id="dateForm" class="textbox" type="date" name="dateForm">
+    `;
+    },
+    destroy() {
+        document.querySelector('#candidateDetailsForm').innerHTML = '';
+    },
+};
+
+interviewApp.TechnicalLevelPickerHeader = function (option) {
+    const levelTitle = option.headers.map(element => `
+        <span class="technicalLevel_span"> ${element} </span>
+        `);
+    return levelTitle.join('');
+};
+
+interviewApp.TechnicalLevelPickerInputs = function (option) {
+    const inputsArr = option.map(element => `
+             <input type="radio" class="radioInput" name="radioInput" value = "${element}">
+            `);
     return `
+        <div class="groupRadioButtons">
+        ${inputsArr.join('')}
+        </div>`;
+};
+
+interviewApp.TechnicalLevelPickerBody = function (option) {
+    const radioList = option.columnData.map(element => `
+        ${interviewApp.TechnicalLevelPickerInputs(element.inputLevels)}
+        `);
+    return radioList.join('');
+};
+
+interviewApp.TechnicalLevelPicker = {
+    init() {
+        const obj = interviewApp.newEvalObj.TechnicalObj;
+
+        return `
+    <h1 class="boxTitle">${obj.title}</h1>
+    <div id="radio_select">
+        <div id="radio_select_header">
+            ${interviewApp.TechnicalLevelPickerHeader(obj)}
+        </div>
+            ${interviewApp.TechnicalLevelPickerBody(obj)}
+    </div>
+    `;
+    },
+    destroy() {
+        document.querySelector('#technicalLevelPicker').innerHTML = '';
+    },
+};
+
+interviewApp.textArea = function (option) {
+    return `
+    <h1 class="boxTitle">${option.title}</h1>
+    <textarea id="${option.id}" name="${option.name}" placeholder="${option.placeholder}"></textarea>
+    `;
+};
+
+interviewApp.textAreaSection = {
+    init() {
+        const obj = interviewApp.newEvalObj.textAreaobj;
+
+        const textAreas = obj.map(element => interviewApp.textArea(element)).join('');
+        return `
+        ${textAreas}
+        `;
+    },
+};
+
+interviewApp.DropDownListItem = function (option) {
+    return `
+    <li>
+    <label>${option.label}</label>
+    <select id="${option.name}" name = "${option.name}">
+        <option selected disabled> Choose </option>
+        <option value="0">None</option>
+        <option value="1">Low</option>
+        <option value="2">Medium</option>
+        <option value="3">High</option>					
+    </select>
+    </li>
+    `;
+};
+
+interviewApp.FieldSet = function (option) {
+    const fieldSetList = option.items.map(element => interviewApp.DropDownListItem(element)).join('');
+
+    return `
+    <fieldset>
+    <legend id="${option.legend}">${option.legend}</legend>
+        <ul>
+            ${fieldSetList}
+        </ul>
+    </fieldset>
+    `;
+};
+
+interviewApp.DropdownSelector = {
+    init() {
+        const dropDowns = interviewApp.newEvalObj.dropDownsObj;
+
+        const fieldSetListString = dropDowns.map(element => interviewApp.FieldSet(element)).join('');
+        return fieldSetListString;
+    },
+};
+
+interviewApp.CandidatePage = {
+    init() {
+        return `
     <section class="body_section">
     <form id="candForm">
-    ${CandidateDetailsForm({})}
-    ${TechnicalLevelPicker({})}
-    ${textAreaSection({})}
-    ${DropdownSelector({})}
+    <div id="candidateDetailsForm">
+    ${interviewApp.CandidateDetailsForm.init()}
+    </div>
+    <div id="technicalLevelPicker">
+    ${interviewApp.TechnicalLevelPicker.init()}
+    </div>
+    <div id="textAreaSection">
+    ${interviewApp.textAreaSection.init()}
+    </div>
+    <div id="dropdownSelector">
+    ${interviewApp.DropdownSelector.init()}
+    </div>
     <input id="submitButton" type="submit" value="Submit" class="submit_button" />
     </form>
     </section>
     `;
-    newEvaluationPageValues;
+    },
+    destroy() {
+        document.querySelector('#candidatePage').innerHTML = '';
+    },
 };
 
-const NewEvaluationPage = function (option) {
-    return `
-    ${NAV('newEval')}
-    ${CandidatePage({})}
-    ${Footer()}
+interviewApp.NewEvaluationPage = {
+    init() {
+        document.querySelector('#newEvaluationPage').innerHTML =
+    `
+    <div id="nav">
+    </div>
+    <div id="candidatePage">
+    ${interviewApp.CandidatePage.init()}
+    </div>
+    <div id="footer">
+    </div>
     `;
+        interviewApp.NAV.init('newEval');
+        interviewApp.Footer.init();
+    },
+    destroy() {
+        document.querySelector('#newEvaluationPage').innerHTML = '';
+    },
 };
