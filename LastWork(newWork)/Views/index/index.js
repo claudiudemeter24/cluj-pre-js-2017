@@ -1,76 +1,134 @@
-const forLoginPage = function () {
-    document.querySelector('#app').innerHTML = LoginPage();
-    const form = document.querySelector('#loginFormId');
-    form.addEventListener('submit', formEvent);
+const interviewApp = {};
+interviewApp.forLoginPage = {
+    init() {
+        document.querySelector('#app').innerHTML =
+    `
+    <div id="loginPage">
+    </div>
+    `;
+        interviewApp.LoginPage.init();
+        const form = document.querySelector('#loginFormId');
+        form.addEventListener('submit', interviewApp.formEvent);
+    },
+    destroy() {
+        document.querySelector('#app').innerHTML = '';
+    },
 };
 
 window.addEventListener('load', () => {
     const LoggedIn = !!sessionStorage.getItem('userName');
     if (!LoggedIn) {
-        forLoginPage();
+        interviewApp.forLoginPage.init();
     } else {
-        goEvalPag();
+        interviewApp.goEvalPag.init();
     }
 
     console.log(localStorage);
 });
 
-const logout = function () {
+interviewApp.logout = function () {
     sessionStorage.removeItem('userName');
-    forLoginPage();
+    interviewApp.forLoginPage.init();
 };
 
-const goEvalPag = function () {
-    document.querySelector('#app').innerHTML = EvaluationsPage();
-    const NAVnewEvalButton = document.querySelector('#newEvalButton');
-    NAVnewEvalButton.addEventListener('click', goNewEvalPag);
-    const logoutButton = document.querySelector('#logoutButton');
-    logoutButton.addEventListener('click', logout);
-    // const detailsButton = document.querySelector('.detail_button');
-    // detailsButton.addEventListener('click', detailForm);
-    detailForm();
+interviewApp.goEvalPag = {
+    init() {
+        document.querySelector('#app').innerHTML =
+        `
+        <div id="evaluationsPage">
+        </div>
+        `;
+        interviewApp.EvaluationsPage.init();
+        const NAVnewEvalButton = document.querySelector('#newEvalButton');
+        NAVnewEvalButton.addEventListener('click', interviewApp.goNewEvalPag.init);
+        const logoutButton = document.querySelector('#logoutButton');
+        logoutButton.addEventListener('click', interviewApp.logout);
+        interviewApp.detailForm();
+    },
+    destroy() {
+        document.querySelector('#app').innerHTML = '';
+    },
 };
 
-const goNewEvalPag = function () {
-    document.querySelector('#app').innerHTML = NewEvaluationPage();
-    const NAVEvalButton = document.querySelector('#EvalButton');
-    NAVEvalButton.addEventListener('click', goEvalPag);
-    const logoutButton = document.querySelector('#logoutButton');
-    logoutButton.addEventListener('click', logout);
-    const submitButton = document.querySelector('#submitButton');
-    submitButton.addEventListener('click', aboutObject);
+interviewApp.goNewEvalPag = {
+    init() {
+        document.querySelector('#app').innerHTML =
+        `
+        <div id="newEvaluationPage">
+        </div>
+        `;
+        interviewApp.NewEvaluationPage.init();
+        const NAVEvalButton = document.querySelector('#EvalButton');
+        NAVEvalButton.addEventListener('click', interviewApp.goEvalPag.init);
+        const logoutButton = document.querySelector('#logoutButton');
+        logoutButton.addEventListener('click', interviewApp.logout);
+        const submitButton = document.querySelector('#submitButton');
+        submitButton.addEventListener('click', interviewApp.aboutObject);
+    },
+    destroy() {
+        document.querySelector('#app').innerHTML = '';
+    },
 };
 
-const formEvent = function (event) {
+interviewApp.formEvent = function (event) {
     event.stopPropagation();
     event.preventDefault();
 
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#password').value;
 
-    if (checkUserDatas(username, password)) {
-        goEvalPag();
-    }
+    let logPromise = new Promise(((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'src/Data/loginDatas.json', true);
+        xhr.send();
+        xhr.onreadystatechange = function() {
+            if (this.readyState === 4) {
+                if (this.status < 400) {
+                    let loginDataResponse = xhr.responseText;
+                    try {
+                        loginDataResponse = JSON.parse(loginDataResponse);
+                        resolve(loginDataResponse);
+                    } catch (e) {
+                        reject('Cannot parse JSON');
+                    }
+                } else {
+                    reject('Cannot get JSON info');
+                }
+            }
+        }
+    }));
+
+    logPromise.then((loginData) => {
+        if (interviewApp.checkUserDatas(username, password, loginData)) {
+            interviewApp.goEvalPag.init();
+        }
+        else{
+            alert('Invalid user datas')
+        }
+    }).catch((err) => {
+        alert(err);
+    });
 };
 
-const checkUserDatas = function (user, pass) {
-    if (user === '1' && pass === '1') {
+interviewApp.checkUserDatas = function (user, pass, UserDataObject) {
+    if (user === UserDataObject.username && pass === UserDataObject.password) {
         sessionStorage.setItem('userName', user);
         return true;
     }
     return false;
 };
 
-const aboutObject = function (event) {
+interviewApp.aboutObject = function (event) {
     event.stopPropagation();
     event.preventDefault();
 
     const evalObject = {};
+    evalObject.selectors = {};
     const dropDowns = document.querySelectorAll('select');
     const textAreas = document.querySelectorAll('textarea');
     const candInputs = document.querySelectorAll('input');
     dropDowns.forEach((e) => {
-        evalObject[e.name] = e.value;
+        evalObject.selectors[e.name] = e.value;
     });
     textAreas.forEach((e) => {
         evalObject[e.name] = e.value;
@@ -91,31 +149,32 @@ const aboutObject = function (event) {
     evalObject.id = (evalObject.CandName + evalObject.dateForm).replace(/\s/g, '');
     evaluationsList.push(evalObject);
     localStorage.setItem('evaluationsList', JSON.stringify(evaluationsList));
-    goEvalPag();
+    interviewApp.goEvalPag.init();
 };
 
-const detailForm = function () {
-    const popUpForm = document.getElementById('PopUp');
-
+interviewApp.detailForm = function () {
     const btns = document.getElementsByClassName('detail_button');
     const btnsArray = Array.prototype.slice.call(btns);
-    const span = document.querySelector('.closePopUp');
+
 
     btnsArray.forEach((btn) => {
-        const buttonDetails = function () {
+        const buttonDetails = function (e) {
+            const idButton = e.target.id;
+            const popUpForm = document.getElementById(`${idButton}popUp`);
             popUpForm.style.display = 'block';
+            const span = popUpForm.querySelector('.closePopUp');
+            const PopUpExit = function () {
+                popUpForm.style.display = 'none';
+            };
+            span.addEventListener('click', PopUpExit);
         };
         btn.addEventListener('click', buttonDetails);
     });
 
-    const PopUpExit = function () {
-        popUpForm.style.display = 'none';
-    };
-    span.addEventListener('click', PopUpExit);
 
     window.onclick = function (event) {
-        if (event.target === popUpForm) {
-            popUpForm.style.display = 'none';
-        }
+        // if (event.target === popUpForm) {
+        //     popUpForm.style.display = 'none';
+        // }
     };
 };
